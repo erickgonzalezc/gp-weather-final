@@ -1,0 +1,61 @@
+replicaCount: 1
+
+
+imagePullSecrets:
+  - name: regcred
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+ingress:
+  enabled: false
+
+resources:
+  limits:
+  requests:
+    cpu: 150m
+    memory: 1280Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 150
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+secrets:
+  db:
+    username: "sa"
+    password: "password"
+    uri: "jdbc:h2:mem:weatherdb"
+
+
+configMap:
+  data:
+    application.weather.base-url: https://api.openweathermap.org/data/2.5/weather?
+    application.weather.app-id: e02e39bb549cd2bdddb3d2d2c8b2cd04
+    okta.oauth2.issuer: https://dev-jmmmssul0t3rz4el.us.auth0.com/
+    okta.oauth2.udience: https://dev-security-demo-api.com/
+
+
+
