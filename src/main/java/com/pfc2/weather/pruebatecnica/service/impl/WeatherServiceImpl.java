@@ -71,6 +71,11 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public List<WeatherHistory> getAllDataInMemory() {
-        return weatherHistoryRepository.findAll();
+        try{
+            return weatherHistoryRepository.findAll();
+        }catch (Exception e){
+            throw  new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"An error occurred in the api to call the weather endpoint "+e.getMessage() );
+        }
+
     }
 }
