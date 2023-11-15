@@ -1,0 +1,21 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    url: jdbc:h2:mem:weatherdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: false
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+application:
+  weather:
+    base-url: https://api.openweathermap.org/data/2.5/weather?
+    app-id: e02e39bb549cd2bdddb3d2d2c8b2cd04
+okta:
+  oauth2:
+    issuer: https://dev-jmmmssul0t3rz4el.us.auth0.com/
+    audience: https://dev-security-demo-api.com/

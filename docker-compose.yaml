@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  java_app:
+    image: gp-java-app:1.0.0
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=jdbc:h2:mem:weatherdb
+      - DATABASE_DRIVER=org.h2.Driver
+      - DATABASE_USER=sa
+      - DATABASE_PASSWORD=password
